@@ -49,10 +49,7 @@ dpkg -i "$KEYRING_PACKAGE_FILE"
 NVIDIA_GPG_KEY_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub"
 wget -qO - "$NVIDIA_GPG_KEY_URL" | apt-key add -
 
-# Ensure that APT is configured to use the keyring
-echo "deb [signed-by=/usr/share/keyrings/cuda-archive-keyring.gpg] $NVIDIA_REPO_URL /" > /etc/apt/sources.list.d/cuda.list
-
-apt-get update -yq
+apt-get update -yq --fix-missing
 
 # Ensure that the requested version of CUDA is available
 cuda_pkg="cuda-libraries-${CUDA_VERSION/./-}"
