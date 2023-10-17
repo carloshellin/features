@@ -45,10 +45,6 @@ KEYRING_PACKAGE_FILE="$KEYRING_PACKAGE_PATH/$KEYRING_PACKAGE"
 wget -O "$KEYRING_PACKAGE_FILE" "$KEYRING_PACKAGE_URL"
 dpkg -i "$KEYRING_PACKAGE_FILE"
 
-# Import the GPG key manually
-NVIDIA_GPG_KEY_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub"
-wget -qO - "$NVIDIA_GPG_KEY_URL" | apt-key add -
-
 apt-get update -yq --fix-missing
 
 # Ensure that the requested version of CUDA is available
